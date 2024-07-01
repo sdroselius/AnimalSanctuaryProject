@@ -49,10 +49,37 @@ public class AnimalSanctuaryApp {
 	}
 
 	private void addAnimalToSanctuary() {
-		// TODO Auto-generated method stub
-		
+		sanctuary.addAnimal(getAnimalFromUser());		
 	}
 
+	public Animal getAnimalFromUser() {
+		System.out.println("What kind of animal are you adding?");
+		System.out.println("1) Emu");
+		System.out.println("2) Giraffe");
+		System.out.println("3) Lion");
+		int choice = kb.nextInt();
+		kb.nextLine(); // flush input buffer
+		Animal newAnimal = null;
+		switch (choice) {
+			case 1:
+				newAnimal = new Emu();
+				break;
+			case 2:
+				newAnimal = new Giraffe();
+				break;
+			case 3:
+				newAnimal = new Lion();
+				break;
+			default:
+				System.out.println("Invalid choice.");
+				return null;
+		}
+		System.out.print("What is the animal's name? ");
+		String name = kb.nextLine();
+		newAnimal.setName(name);
+		return newAnimal;
+	}
+	
 	private void printMainMenu() {
 		System.out.println("** Welcome to the Animal Sanctuary **");
 		System.out.println("1) List animals");
